@@ -7,6 +7,8 @@ RUN yum -y install gcc gcc-c++ make wget subversion libxml2-devel ncurses-devel 
 WORKDIR /usr/src
 RUN svn co http://svn.pjsip.org/repos/pjproject/trunk/ pjproject-trunk
 WORKDIR /usr/src/pjproject-trunk
+RUN touch pjlib/include/pj/config_site.h
+RUN echo "#define PJSIP_MAX_PKT_LEN 8000" > pjlib/include/pj/config_site.h
 RUN ./configure --libdir=/usr/lib64 --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr CFLAGS='-O2 -DNDEBUG'
 RUN make dep
 RUN make
