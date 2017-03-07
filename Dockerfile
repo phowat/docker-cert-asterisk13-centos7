@@ -16,8 +16,8 @@ RUN make install
 RUN ldconfig
 RUN ldconfig -p | grep pj
 WORKDIR /usr/src
-RUN wget http://downloads.asterisk.org/pub/telephony/certified-asterisk/certified-asterisk-13.1-current.tar.gz
-RUN tar -zxvf certified-asterisk-13.1-current.tar.gz
+RUN wget http://downloads.asterisk.org/pub/telephony/certified-asterisk/releases/certified-asterisk-13.1-cert2.tar.gz
+RUN tar -zxvf certified-asterisk-13.1-cert2.tar.gz
 WORKDIR /usr/src/certified-asterisk-13.1-cert2
 RUN sh contrib/scripts/get_mp3_source.sh
 COPY menuselect.makeopts /usr/src/certified-asterisk-13.1-cert2/menuselect.makeopts
