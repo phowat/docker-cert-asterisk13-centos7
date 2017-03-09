@@ -3,7 +3,14 @@ FROM centos:latest
 MAINTAINER Gonzalo Marcote "gonzalomarcote@gmail.com"
 RUN yum -y update
 RUN yum -y install vim tar htop
-RUN yum -y install gcc gcc-c++ make wget subversion libxml2-devel ncurses-devel openssl-devel sqlite-devel libuuid-devel vim-enhanced jansson-devel unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel subversion speex-devel mysql-devel
+RUN yum -y install gcc gcc-c++ make wget subversion libxml2-devel ncurses-devel openssl-devel sqlite-devel libuuid-devel vim-enhanced jansson-devel unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel subversion speex-devel mysql-devel openssl
+
+RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN  rpm -Uvh epel-release-latest-7.noarch.rpm
+RUN  yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+RUN yum -y install libsrtp-devel uuid-devel sqlite-devel libxml2-devel ncurses-devel gsm-devel libuuid-devel
+
+
 WORKDIR /usr/src
 RUN svn co http://svn.pjsip.org/repos/pjproject/trunk/ pjproject-trunk
 WORKDIR /usr/src/pjproject-trunk
