@@ -22,6 +22,7 @@ RUN tar -zxvf asterisk-certified-13.13-current.tar.gz
 WORKDIR /usr/src/asterisk-certified-13.13-cert2
 RUN sh contrib/scripts/get_mp3_source.sh
 COPY menuselect.makeopts /usr/src/asterisk-certified-13.13-cert2/menuselect.makeopts
+COPY menuselect.makedeps /usr/src/asterisk-certified-13.13-cert2/menuselect.makedeps
 RUN ./configure CFLAGS='-g -O2 -mtune=native' --libdir=/usr/lib64
 RUN make
 RUN make install
